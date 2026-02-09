@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/user.routes.js";
+import assessmentRoutes from './routes/assessmentRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -17,6 +18,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+// Mount Modular Routes
+app.use('/api/assessments', assessmentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
